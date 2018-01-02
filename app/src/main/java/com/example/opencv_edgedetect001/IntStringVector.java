@@ -1,12 +1,18 @@
 package com.example.opencv_edgedetect001;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import static java.io.FileDescriptor.out;
+
+
 /**
  * Created by blandfars on 2017-12-29.
  */
 
 //A kind of vector where each index corresponds to two Integers and one String
 //Used for storing (resouceID, soundPool-ID, resourceFile-name) for each sound file loaded.
-public class IntStringVector {
+public class IntStringVector implements Parcelable{
     private int[] resourceID;
     private int[] soundPoolID;
     private String[] resourceName;
@@ -62,4 +68,35 @@ public class IntStringVector {
             return false;
         }
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeIntArray(resourceID);
+        parcel.writeIntArray(soundPoolID);
+        parcel.writeStringArray(resourceName);
+    }
+
+    private IntStringVector(Parcel in) {
+        in.readIntArray(resourceID);
+        in.readIntArray(soundPoolID);
+        in.readStringArray(resourceName);
+        in.wr
+    }
+
+    public static final Parcelable.Creator<IntStringVector> CREATOR = new Parcelable.Creator<IntStringVector>() {
+        public IntStringVector createFromParcel(Parcel in) {
+            return new IntStringVector(in);
+        }
+
+        public IntStringVector[] newArray(int size) {
+            return new IntStringVector[size];
+        }
+    };
+
+
 }

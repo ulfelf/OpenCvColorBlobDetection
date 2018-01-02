@@ -112,6 +112,7 @@ public class LoadingActivity extends AppCompatActivity {
         //"SoundInformation" is passed to a hand made AsyncTask, that loads all the sounds into a SoundPool that resides inside the Soundinformation.
         soundLoaderr.execute(new SoundInformation[]{ soundInformation});
 
+
         //--- --- --- --- Grejor från Fredrik --- --- --- ---
     }
 
